@@ -2,10 +2,10 @@
 
 Place your Wyscout XLSX exports here.
 
-After adding files, update `manifest.json` with the filenames:
+The manifest is generated automatically on `pnpm start` and `pnpm build`. To regenerate manually:
 
-```json
-{ "files": ["my-export-2024.xlsx", "another-export.xlsx"] }
+```bash
+node scripts/generate-manifest.js
 ```
 
-See CLAUDE.md for details on required columns and data format.
+See the main [README](../README.md) for the full list of required columns and data format.
