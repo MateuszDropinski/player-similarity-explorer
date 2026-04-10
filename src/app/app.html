@@ -1,0 +1,58 @@
+@if (screenTooSmall()) {
+  <div class="screen-blocker">
+    <div class="screen-blocker-content">
+      <h2>Screen Too Small</h2>
+      <p>This application requires a screen width of at least 1000px to function properly. Please resize your browser window or use a larger device.</p>
+    </div>
+  </div>
+}
+
+<header class="app-header">
+  <span class="app-title">Player Similarity Explorer</span>
+
+  <span class="app-data-source">
+    @if (similarity.isComputing()) {
+      Computing similarities...
+    } @else if (!dataLoader.hasData() && !dataLoader.isLoading()) {
+      No data loaded
+    }
+  </span>
+
+  @if (dataLoader.hasData()) {
+    <div class="header-filter">
+      <label class="header-filter-label">Min minutes:</label>
+      <input
+        type="number"
+        class="header-input"
+        min="0"
+        [max]="maxMinutes()"
+        step="1"
+        [value]="minutesDisplay()"
+        (change)="onMinMinutesChange(+$any($event.target).value)"
+      />
+    </div>
+  }
+</header>
+
+<div class="app-shell">
+  <app-player-list class="panel panel-left" />
+
+  <div class="panel panel-center">
+    @if (similarity.isComputing()) {
+      <div class="loading-overlay">
+        <div class="spinner"></div>
+        <p>Preparing similarity data...</p>
+      </div>
+    }
+    <app-diagram />
+  </div>
+
+  <app-detail-panel
+    class="panel panel-right"
+    [class.panel-right-open]="detailPanelOpen()"
+  />
+
+  <button class="detail-toggle" (click)="toggleDetailPanel()">
+    {{ detailPanelOpen() ? '>' : '<' }}
+  </button>
+</div>

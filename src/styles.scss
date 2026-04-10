@@ -1,0 +1,61 @@
+@import 'ng-diagram/styles.css';
+
+:root {
+  --panel-left-width: 280px;
+  --panel-right-width: 360px;
+
+  --color-att: #e8593c;
+  --color-pas: #1d9e75;
+  --color-def: #378add;
+  --color-root-node: #534ab7;
+  --color-similar-node: #3d3d3a;
+
+  --color-canvas-bg: #f8f7f4;
+  --color-sidebar-bg: #1a1a1a;
+  --color-sidebar-text: #e8e6e0;
+  --color-sidebar-muted: #888780;
+  --color-panel-border: #2a2a2a;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
+  background: var(--color-sidebar-bg);
+  color: var(--color-sidebar-text);
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3a3a3a;
+  border-radius: 3px;
+
+  &:hover {
+    background: #555;
+  }
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #3a3a3a transparent;
+}
